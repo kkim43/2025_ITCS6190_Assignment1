@@ -1,5 +1,8 @@
 # 2025_ITCS6190_Assignment1
 
+## PDF Report
+[📄 Report.pdf](./Report.pdf)
+
 ## What the stack does
 This project runs two Docker containers: a PostgreSQL database with sample trip data and a Python app. The app reads from the database, calculates basic trip statistics, and saves the results to the console and to out/summary.json.
 
