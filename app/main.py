@@ -4,9 +4,9 @@ import psycopg
 # Environment variables with defaults
 DB_HOST = os.getenv("DB_HOST", "db")
 DB_PORT = int(os.getenv("DB_PORT", "5432"))
-DB_USER = "appuser"
-DB_PASS = "secretpw"
-DB_NAME = "appdb"
+DB_USER = os.getenv("DB_USER")
+DB_PASS = os.getenv("DB_PASS")
+DB_NAME = os.getenv("DB_NAME")
 TOP_N = int(os.getenv("APP_TOP_N", "5"))
 
 def connect_with_retry(retries=10, delay=2):
