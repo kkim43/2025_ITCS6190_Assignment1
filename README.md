@@ -1,6 +1,16 @@
 # 2025_ITCS6190_Assignment1
 
 ``` bash
+acardioid@acardioid-uncc:~/CloudAsn/2025_ITCS6190_Assignment1$ make down
+docker compose down -v
+[+] Running 3/3
+ ✔ Container 2025_itcs6190_assignment1-app-1  Removed                      0.0s 
+ ✔ Container 2025_itcs6190_assignment1-db-1   Removed                      0.0s 
+ ✔ Network 2025_itcs6190_assignment1_default  Removed                      0.1s 
+acardioid@acardioid-uncc:~/CloudAsn/2025_ITCS6190_Assignment1$ 
+acardioid@acardioid-uncc:~/CloudAsn/2025_ITCS6190_Assignment1$ 
+acardioid@acardioid-uncc:~/CloudAsn/2025_ITCS6190_Assignment1$ 
+acardioid@acardioid-uncc:~/CloudAsn/2025_ITCS6190_Assignment1$ 
 acardioid@acardioid-uncc:~/CloudAsn/2025_ITCS6190_Assignment1$ make up
 docker compose up --build
 #1 [internal] load local bake definitions
@@ -15,69 +25,72 @@ docker compose up --build
 #3 transferring dockerfile: 96B done
 #3 DONE 0.0s
 
-#4 [app internal] load metadata for docker.io/library/python:3.11-slim
-#4 DONE 0.1s
+#4 [db internal] load metadata for docker.io/library/postgres:16
+#4 ...
 
-#5 [db internal] load metadata for docker.io/library/postgres:16
-#5 DONE 0.2s
+#5 [app internal] load metadata for docker.io/library/python:3.11-slim
+#5 DONE 0.3s
+
+#4 [db internal] load metadata for docker.io/library/postgres:16
+#4 DONE 0.3s
 
 #6 [app internal] load .dockerignore
 #6 transferring context: 2B done
 #6 DONE 0.0s
 
-#7 [app 1/4] FROM docker.io/library/python:3.11-slim@sha256:1d6131b5d479888b43200645e03a78443c7157efbdb730e6b48129740727c312
+#7 [db internal] load .dockerignore
+#7 transferring context: 2B done
 #7 DONE 0.0s
 
-#8 [app internal] load build context
-#8 transferring context: 29B done
+#8 [app 1/4] FROM docker.io/library/python:3.11-slim@sha256:1d6131b5d479888b43200645e03a78443c7157efbdb730e6b48129740727c312
 #8 DONE 0.0s
 
-#9 [app 3/4] WORKDIR /app
-#9 CACHED
+#9 [db 1/2] FROM docker.io/library/postgres:16@sha256:3105ef2d654e4b216af23d8d71c85db7c490479e4ba4c10979883f806f247fdd
+#9 DONE 0.0s
 
-#10 [app 2/4] RUN pip install --no-cache-dir psycopg[binary]==3.1.19
-#10 CACHED
+#10 [app internal] load build context
+#10 transferring context: 29B done
+#10 DONE 0.0s
 
-#11 [app 4/4] COPY main.py /app/
-#11 CACHED
+#11 [db internal] load build context
+#11 transferring context: 30B done
+#11 DONE 0.0s
 
-#12 [app] exporting to image
-#12 exporting layers done
-#12 writing image sha256:f654d05242bd8a37f40fabc695a579773f2357837fcf1f4d170997160769b7fa done
-#12 naming to docker.io/library/2025_itcs6190_assignment1-app done
-#12 DONE 0.0s
+#12 [db 2/2] COPY init.sql /docker-entrypoint-initdb.d/
+#12 CACHED
 
-#13 [app] resolving provenance for metadata file
-#13 DONE 0.0s
+#13 [app 3/4] WORKDIR /app
+#13 CACHED
 
-#14 [db internal] load .dockerignore
-#14 transferring context: 2B done
-#14 DONE 0.0s
+#14 [app 2/4] RUN pip install --no-cache-dir psycopg[binary]==3.1.19
+#14 CACHED
 
-#15 [db 1/2] FROM docker.io/library/postgres:16@sha256:3105ef2d654e4b216af23d8d71c85db7c490479e4ba4c10979883f806f247fdd
-#15 DONE 0.0s
+#15 [app 4/4] COPY main.py /app/
+#15 CACHED
 
-#16 [db internal] load build context
-#16 transferring context: 30B done
+#16 [app] exporting to image
+#16 exporting layers done
+#16 writing image sha256:f654d05242bd8a37f40fabc695a579773f2357837fcf1f4d170997160769b7fa done
+#16 naming to docker.io/library/2025_itcs6190_assignment1-app done
 #16 DONE 0.0s
 
-#17 [db 2/2] COPY init.sql /docker-entrypoint-initdb.d/
-#17 CACHED
+#17 [db] exporting to image
+#17 exporting layers done
+#17 writing image sha256:12abcbdb13a2996a372323c44aad3dfe11fc8baa886758f213a14066cfe2a390 done
+#17 naming to docker.io/library/2025_itcs6190_assignment1-db done
+#17 DONE 0.0s
 
-#18 [db] exporting to image
-#18 exporting layers done
-#18 writing image sha256:12abcbdb13a2996a372323c44aad3dfe11fc8baa886758f213a14066cfe2a390 done
-#18 naming to docker.io/library/2025_itcs6190_assignment1-db done
+#18 [app] resolving provenance for metadata file
 #18 DONE 0.0s
 
 #19 [db] resolving provenance for metadata file
 #19 DONE 0.0s
 [+] Running 5/5
- ✔ 2025_itcs6190_assignment1-db               Built                                                                                    0.0s 
- ✔ 2025_itcs6190_assignment1-app              Built                                                                                    0.0s 
- ✔ Network 2025_itcs6190_assignment1_default  Created                                                                                  0.0s 
- ✔ Container 2025_itcs6190_assignment1-db-1   Created                                                                                  0.1s 
- ✔ Container 2025_itcs6190_assignment1-app-1  Created                                                                                  0.0s 
+ ✔ 2025_itcs6190_assignment1-db               Built                                                                                                                0.0s 
+ ✔ 2025_itcs6190_assignment1-app              Built                                                                                                                0.0s 
+ ✔ Network 2025_itcs6190_assignment1_default  Created                                                                                                              0.0s 
+ ✔ Container 2025_itcs6190_assignment1-db-1   Created                                                                                                              0.0s 
+ ✔ Container 2025_itcs6190_assignment1-app-1  Created                                                                                                              0.0s 
 Attaching to app-1, db-1
 db-1  | The files belonging to this database system will be owned by user "postgres".
 db-1  | This user must also own the server process.
@@ -97,8 +110,6 @@ db-1  | selecting default time zone ... Etc/UTC
 db-1  | creating configuration files ... ok
 db-1  | running bootstrap script ... ok
 db-1  | performing post-bootstrap initialization ... ok
-db-1  | initdb: warning: enabling "trust" authentication for local connections
-db-1  | initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
 db-1  | syncing data to disk ... ok
 db-1  | 
 db-1  | 
@@ -106,10 +117,12 @@ db-1  | Success. You can now start the database server using:
 db-1  | 
 db-1  |     pg_ctl -D /var/lib/postgresql/data -l logfile start
 db-1  | 
-db-1  | waiting for server to start....2025-09-07 22:04:34.028 UTC [49] LOG:  starting PostgreSQL 16.10 (Debian 16.10-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
-db-1  | 2025-09-07 22:04:34.030 UTC [49] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
-db-1  | 2025-09-07 22:04:34.033 UTC [52] LOG:  database system was shut down at 2025-09-07 22:04:33 UTC
-db-1  | 2025-09-07 22:04:34.037 UTC [49] LOG:  database system is ready to accept connections
+db-1  | initdb: warning: enabling "trust" authentication for local connections
+db-1  | initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+db-1  | waiting for server to start....2025-09-07 22:43:31.021 UTC [48] LOG:  starting PostgreSQL 16.10 (Debian 16.10-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+db-1  | 2025-09-07 22:43:31.022 UTC [48] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db-1  | 2025-09-07 22:43:31.026 UTC [51] LOG:  database system was shut down at 2025-09-07 22:43:30 UTC
+db-1  | 2025-09-07 22:43:31.030 UTC [48] LOG:  database system is ready to accept connections
 db-1  |  done
 db-1  | server started
 db-1  | CREATE DATABASE
@@ -120,24 +133,24 @@ db-1  | CREATE TABLE
 db-1  | INSERT 0 6
 db-1  | 
 db-1  | 
-db-1  | 2025-09-07 22:04:34.228 UTC [49] LOG:  received fast shutdown request
-db-1  | waiting for server to shut down....2025-09-07 22:04:34.229 UTC [49] LOG:  aborting any active transactions
-db-1  | 2025-09-07 22:04:34.231 UTC [49] LOG:  background worker "logical replication launcher" (PID 55) exited with exit code 1
-db-1  | 2025-09-07 22:04:34.231 UTC [50] LOG:  shutting down
-db-1  | 2025-09-07 22:04:34.232 UTC [50] LOG:  checkpoint starting: shutdown immediate
-db-1  | 2025-09-07 22:04:34.288 UTC [50] LOG:  checkpoint complete: wrote 936 buffers (5.7%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.051 s, sync=0.003 s, total=0.057 s; sync files=306, longest=0.001 s, average=0.001 s; distance=4294 kB, estimate=4294 kB; lsn=0/19245C8, redo lsn=0/19245C8
-db-1  | 2025-09-07 22:04:34.294 UTC [49] LOG:  database system is shut down
+db-1  | waiting for server to shut down....2025-09-07 22:43:31.223 UTC [48] LOG:  received fast shutdown request
+db-1  | 2025-09-07 22:43:31.223 UTC [48] LOG:  aborting any active transactions
+db-1  | 2025-09-07 22:43:31.225 UTC [48] LOG:  background worker "logical replication launcher" (PID 54) exited with exit code 1
+db-1  | 2025-09-07 22:43:31.226 UTC [49] LOG:  shutting down
+db-1  | 2025-09-07 22:43:31.227 UTC [49] LOG:  checkpoint starting: shutdown immediate
+db-1  | 2025-09-07 22:43:31.260 UTC [49] LOG:  checkpoint complete: wrote 936 buffers (5.7%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.028 s, sync=0.003 s, total=0.035 s; sync files=306, longest=0.001 s, average=0.001 s; distance=4294 kB, estimate=4294 kB; lsn=0/19245C8, redo lsn=0/19245C8
+db-1  | 2025-09-07 22:43:31.266 UTC [48] LOG:  database system is shut down
 db-1  |  done
 db-1  | server stopped
 db-1  | 
 db-1  | PostgreSQL init process complete; ready for start up.
 db-1  | 
-db-1  | 2025-09-07 22:04:34.347 UTC [1] LOG:  starting PostgreSQL 16.10 (Debian 16.10-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
-db-1  | 2025-09-07 22:04:34.347 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
-db-1  | 2025-09-07 22:04:34.347 UTC [1] LOG:  listening on IPv6 address "::", port 5432
-db-1  | 2025-09-07 22:04:34.349 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
-db-1  | 2025-09-07 22:04:34.352 UTC [67] LOG:  database system was shut down at 2025-09-07 22:04:34 UTC
-db-1  | 2025-09-07 22:04:34.356 UTC [1] LOG:  database system is ready to accept connections
+db-1  | 2025-09-07 22:43:31.342 UTC [1] LOG:  starting PostgreSQL 16.10 (Debian 16.10-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+db-1  | 2025-09-07 22:43:31.342 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+db-1  | 2025-09-07 22:43:31.342 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+db-1  | 2025-09-07 22:43:31.344 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db-1  | 2025-09-07 22:43:31.348 UTC [66] LOG:  database system was shut down at 2025-09-07 22:43:31 UTC
+db-1  | 2025-09-07 22:43:31.352 UTC [1] LOG:  database system is ready to accept connections
 app-1  | === Summary ===
 app-1  | {
 app-1  |   "total_trips": 6,
@@ -188,8 +201,20 @@ app-1  |       "fare": 10.9
 app-1  |     }
 app-1  |   ]
 app-1  | }
-
 app-1 exited with code 0
+Gracefully Stopping... press Ctrl+C again to force
+ Container 2025_itcs6190_assignment1-app-1  Stopping
+ Container 2025_itcs6190_assignment1-app-1  Stopped
+ Container 2025_itcs6190_assignment1-db-1  Stopping
+db-1   | 2025-09-07 22:43:37.152 UTC [1] LOG:  received fast shutdown request
+db-1   | 2025-09-07 22:43:37.153 UTC [1] LOG:  aborting any active transactions
+db-1   | 2025-09-07 22:43:37.155 UTC [1] LOG:  background worker "logical replication launcher" (PID 69) exited with exit code 1
+db-1   | 2025-09-07 22:43:37.156 UTC [64] LOG:  shutting down
+db-1   | 2025-09-07 22:43:37.157 UTC [64] LOG:  checkpoint starting: shutdown immediate
+db-1   | 2025-09-07 22:43:37.163 UTC [64] LOG:  checkpoint complete: wrote 6 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.001 s, total=0.007 s; sync files=5, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/1924640, redo lsn=0/1924640
+db-1   | 2025-09-07 22:43:37.167 UTC [1] LOG:  database system is shut down
+ Container 2025_itcs6190_assignment1-db-1  Stopped
+
 
 ```
 
